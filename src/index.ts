@@ -20,7 +20,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(userRouter);
 const server = http.createServer(app);
-server.listen(8080, () => {
+server.listen(process.env.PORT, () => {
     console.log("server is listeing at port 8080");
 });
 
