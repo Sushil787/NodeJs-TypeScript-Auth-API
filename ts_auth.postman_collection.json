@@ -1,0 +1,47 @@
+{
+	"info": {
+		"_postman_id": "d46a0b22-db9c-4bbe-9381-34b7760de7fd",
+		"name": "ts_auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27845811",
+		"_collection_link": "https://galactic-rocket-620047.postman.co/workspace/New-Team-Workspace~9d0bb515-e1f9-43cf-bc49-0fc55d6b9600/collection/27845811-d46a0b22-db9c-4bbe-9381-34b7760de7fd?action=share&creator=27845811&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"username\":\"sushil gyawali\",\n    \"password\":\"asldfsdf23\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/signin",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"signin"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
