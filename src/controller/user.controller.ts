@@ -2,25 +2,37 @@ import { Request, Response } from 'express';
 import { IUser } from '../interface/user.interface';
 import userModel from '../model/user.model';
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 export default class Controller {
 
 
     public async signin(req: Request, res: Response): Promise<Response | Error> {
         const { username, password } = req.body;
         try {
-            if (!username || !password) {
-                return res.status(401).json({ message: "incomplete content" });
+          if (!username || !password) {
+            return res.status(401).json({ message: "Incomplete content" });
+          } else {
+            const user: IUser = await userModel.findOne({ username });
+            console.log(user);
+            if (!user) {
+              return res.status(404).json({ message: "No user found" });
             } else {
-                const user = await userModel.findOne({ username });
-
+              const verify: boolean = await bcrypt.compare(password, user.password);
+              if (verify) {
+                const payload = { userId: user._id, username: user.username }; // Create a plain object payload
+                const token: string = jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: "5h" });
+                res.setHeader("Authorization", `Bearer ${token}`);
+                return res.status(200).json({ message: "Authentication successful" });
+              } else {
+                return res.status(401).json({ message: "Username or password incorrect" });
+              }
             }
-
+          }
+        } catch (error) {
+          return res.status(500).json({ message: "Internal server error" });
         }
-        catch (error: any) {
-            return res.status(500).json({ message: error.message });
-        }
-    };
-
+      }
+      
     public async signup(req: Request, res: Response): Promise<Response | Error> {
         const user: IUser = req.body;
         console.log(user);
