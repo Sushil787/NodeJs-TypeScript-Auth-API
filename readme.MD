@@ -1,4 +1,4 @@
-#  A test Authentication API written on TypeScript
+#  A test Authentication API written on TypeScript and Node
 
 This is a AUTH API with JWT (JSON Web Token) authentication. It allows users to sign up and sign and get JWT for further resource access.
 
