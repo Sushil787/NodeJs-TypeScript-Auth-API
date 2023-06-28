@@ -18,7 +18,7 @@ This is a AUTH API with JWT (JSON Web Token) authentication. It allows users to 
 1. Clone the repository:
 
    ```bash
-   git clone 
+   git clone https://github.com/Sushil787/NodeJs-TypeScript-Auth-API.git
    ```
 
 ## Set up environment variables
